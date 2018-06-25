@@ -2,10 +2,22 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var pool = require('../config/dbPool');
+var main_buttons = require('../models/main_buttons');
 
 // 사용자가 최초로 채팅방에 들어올 때 키보드 영역에 표시될 자동 응답 명령어 목록 호출
 router.get('/keyboard', function(req, res){
-  var main_buttons = require('../models/main_buttons');
+ main_buttons.mb(function(err,result){
+      if(err){
+        res.status(500).json({
+        message : "error"
+        });
+      }else{
+        res.status(200).json({
+          type : "buttons",
+          buttons : result
+        });
+    }
+  })
 });
 /*
 // 사용자의 입력을 처리하여 응답
