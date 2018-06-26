@@ -17,10 +17,19 @@ function bridge(content, callback){
 
     }else if(content === "처음으로"){
         const main = require('./main_buttons');
+    }else if(content === "Roll&Noodels"){
+        food.RN(content, function(err, result){
+            callback(null,result);
+        });
+    }else if(content === "The bab"){
+        food.RN(content, function(err, result){
+            callback(null, result);
+        });
     }else{
 
     }
 }
+
 
 
 module.exports.bridge = bridge;

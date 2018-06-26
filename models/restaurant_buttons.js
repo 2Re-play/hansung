@@ -80,23 +80,10 @@ function storename(callback){
         }
     })
 }
-function store_name_birdge(data,callback){
-    if(data.store_name === 'ROll&Noodles'){
-        RN(function(err, result){
-            if(err){
-                console.log(err);
-                callback(err);
-            }else {
-                callback(null,result);
-            }
-        })
-    }
 
-}
 
 
 
 
 module.exports.RN = RN;
 module.exports.storename = storename;
-module.exports.store_name_birdge = store_name_birdge;
