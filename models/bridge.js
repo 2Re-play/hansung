@@ -17,7 +17,7 @@ function bridge(content, callback){
 
     }else if(content === "처음으로"){
         const main = require('./main_buttons');
-    }else if(content === "Roll&Noodels"){
+    }else if(content === "ROll&Noodles"){
         food.RN(content, function(err, result){
             callback(null,result);
         });
