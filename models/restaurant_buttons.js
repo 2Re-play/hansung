@@ -60,9 +60,12 @@ function storename(callback){
                     for(var i=0; i<result.length; i++){
                         store_name.push(result[i].store_name);
                     }
-                    const data = {
+                    const data = 
+                        {
+                        keyboard :{
                         type : "buttons",
                         buttons : store_name
+                        }
                       }
                     callback(null,data);
                     store_name_birdge(data,function(err, result){
