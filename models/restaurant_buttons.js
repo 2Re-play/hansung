@@ -24,7 +24,7 @@ const pool = require('../config/dbPool');
                     // }
                     const data = {
                         type : "buttons",
-                        text : store_name+"/n"+result
+                        text : content+"/n"+result
                       }
                     callback(null,data);
                     // food.storename(callback,function(err, result){
