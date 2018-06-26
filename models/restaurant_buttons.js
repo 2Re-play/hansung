@@ -1,7 +1,7 @@
 const pool = require('../config/dbPool');
 
 //식당선택
- function RN(store_name,callback){
+ function RN(content,callback){
     console.log('3')
     pool.getConnection(function(err, connection){
         if(err){
@@ -11,8 +11,7 @@ const pool = require('../config/dbPool');
             connection.release();
         }else{
             var sql = "SELECT menu,price  FROM restraurant WHERE store_name = ?";
-            connection.query(sql,store_name,function(err,result){
-                console.log(result)
+            connection.query(sql,content,function(err,result){
                 if(err){
                     res.status(500).send({
                         message : "mainbuttons select error"
@@ -70,9 +69,6 @@ function storename(callback){
                         }
                       }
                     callback(null,data);
-                    store_name_birdge(data,function(err, result){
-                        callback(null,result);
-                     })
                     console.log('store_name', store_name)
                           connection.release();
                 }
