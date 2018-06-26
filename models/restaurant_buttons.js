@@ -62,7 +62,10 @@ function storename(callback){
                     }
                     const data = 
                         {
-                        keyboard :{
+                        message : {
+                            text : "식당을 선택해주세요!"
+                        },
+                        keyboard : {
                         type : "buttons",
                         buttons : store_name
                         }
