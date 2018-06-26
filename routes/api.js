@@ -3,6 +3,8 @@ var app = express();
 var router = express.Router();
 var pool = require('../config/dbPool');
 var main_buttons = require('../models/main_buttons');
+var bd = require('../models/bridge');
+var menu = require('../models/restaurant_buttons')
 
 // 사용자가 최초로 채팅방에 들어올 때 키보드 영역에 표시될 자동 응답 명령어 목록 호출
 router.get('/keyboard', function(req, res){
@@ -19,19 +21,27 @@ router.get('/keyboard', function(req, res){
     }
   })
 });
-/*
+
 // 사용자의 입력을 처리하여 응답
 router.post('/message', function(req, res){
-  var user_key = req.body.user_key;
-  var type = req.body.type;
+  // var user_key = req.body.user_key;
+  // var type = req.body.type;
   var content = req.body.content;
-
-  console.log(content);
   // 버튼 선택 옵션 정리
-  var option = require("./options.js")(conn, content, res);
+  console.log('1content',content)
+  bd.bridge(content,function(err, result){
+    console.log('2content',content)
+    if(err){
+      res.status(500).json({
+        message : "error"
+        });
+    }else{
+      res.status(200).json(result);
+    }
+  })
 
 });
-
+/*
 // 사용자가 친구추가 했을 경우
 router.post('/friend', function(req, res){
   var user_key = req.body.user_key;
