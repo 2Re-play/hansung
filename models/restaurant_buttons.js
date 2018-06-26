@@ -23,8 +23,15 @@ const pool = require('../config/dbPool');
                     //     data.push(result.buttons[i]);
                     // }
                     const data = {
-                        type : "buttons",
+                        message : {
                         text : content+"/n"+result
+                        },
+                        keyboard : {
+                            type : "buttons",
+                            buttons : [
+                                "처음으로"
+                            ]
+                        }
                       }
                     callback(null,data);
                     // food.storename(callback,function(err, result){
