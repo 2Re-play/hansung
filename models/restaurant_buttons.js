@@ -12,6 +12,8 @@ const pool = require('../config/dbPool');
         }else{
             var sql = "SELECT menu,price  FROM restraurant WHERE store_name = ?";
             connection.query(sql,content,function(err,result){
+                console.log('result',result);
+                menu += content+"식당메뉴\n" + result;
                 if(err){
                     res.status(500).send({
                         message : "mainbuttons select error"
@@ -24,7 +26,7 @@ const pool = require('../config/dbPool');
                     // }
                     const data = {
                         message : {
-                        text : content+"/n"+result
+                        text : menu
                         },
                         keyboard : {
                             type : "buttons",
