@@ -13,7 +13,7 @@ const pool = require('../config/dbPool');
             var sql = "SELECT menu,price  FROM restraurant WHERE store_name = ?";
             connection.query(sql,content,function(err,result){
                 console.log('result',result);
-                const temp1;
+                var temp1;
                 for(let i=0; i<result.length; i++){
                    JSON.stringify( '메뉴 : '+temp1.push(result[i].menu));
                    JSON.stringify( ' 가격 : '+temp1.push(result[i].price));
