@@ -3,7 +3,7 @@ const food = require('./restaurant_buttons')
 
 function bridge(content, callback){
     if(content === "학생식당 메뉴"){
-        food.storename(callback,function(err, rows, fields){
+        food.storename(callback,function(err, result){
            callback(null,result);
         })
     }
