@@ -18,6 +18,7 @@ const pool = require('../config/dbPool');
                    JSON.stringify( '메뉴 : '+temp1.push(result[i].menu));
                    JSON.stringify( ' 가격 : '+temp1.push(result[i].price));
                 }
+                console.log(temp1);
                 const menu = "*"+content+" 메뉴*\n" + temp1;
                 if(err){
                     res.status(500).send({
