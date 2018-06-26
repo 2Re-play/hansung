@@ -11,14 +11,9 @@ const pool = require('../config/dbPool');
             connection.release();
         }else{
             var sql = "SELECT menu,price  FROM restraurant WHERE store_name = ?";
-            connection.query(sql,content,function(err,result){
-                console.log('result',result);
-                var temp1;
-                for(let i=0; i<result.length; i++){
-                   JSON.stringify( '메뉴 : '+temp1.push(result[i].menu));
-                   JSON.stringify( ' 가격 : '+temp1.push(result[i].price));
-                }
-                console.log(temp1);
+            connection.query(sql,content,function(err,rows, fields){
+                console.log('rows',rows);
+                console.log('fields', fields)
                 const menu = "*"+content+" 메뉴*\n" + temp1;
                 if(err){
                     res.status(500).send({
