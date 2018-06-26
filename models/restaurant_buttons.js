@@ -1,6 +1,6 @@
 const pool = require('../config/dbPool');
 
-//ROll&Noodles
+//식당선택
  function RN(store_name,callback){
     console.log('3')
     pool.getConnection(function(err, connection){
@@ -17,7 +17,6 @@ const pool = require('../config/dbPool');
                     res.status(500).send({
                         message : "mainbuttons select error"
                     });
-
                     connection.release();
                 }else{
                     // var data = [];
@@ -82,7 +81,7 @@ function storename(callback){
     })
 }
 function store_name_birdge(data,callback){
-    if(data.store_name === 'ROll&Noodels'){
+    if(data.store_name === 'ROll&Noodles'){
         RN(function(err, result){
             if(err){
                 console.log(err);
