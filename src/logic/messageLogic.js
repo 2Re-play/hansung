@@ -22,7 +22,7 @@ const selectstore = async (callback) => {
     const result = await common_buttons.storename(connection)
     callback(result)
   } catch (e) {
-    callback(e.message)
+    console.log(e.message)
   } finally {
     connection.release()
   }
