@@ -16,14 +16,18 @@ exports.selectmessage = async (content, callback) => {
   }
 }
 
-const selectstore = async (callback) => {
-  const connection = await dbConnection()
-  try {
-    const result = await common_buttons.storename(connection)
-    callback(result)
-  } catch (e) {
-    console.log(e.message)
-  } finally {
-    connection.release()
-  }
+const selectstore = async () => {
+  return new Promise((resolve, reject) => {
+    const connection = dbConnection()
+    try {
+      const result = common_buttons.storename(connection)
+      console.log(result)
+      resolve(result)
+    } catch (e) {
+      console.log(e.message)
+      reject(e.message)
+    } finally {
+      connection.release()
+    }
+  })
 }
