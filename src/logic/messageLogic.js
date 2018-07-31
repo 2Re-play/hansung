@@ -16,18 +16,34 @@ exports.selectmessage = async (content, callback) => {
   }
 }
 
+// const selectstore = async (callback) => {
+//   const connection = await dbConnection()
+//   try {
+//     const result = await common_buttons.storename(connection)
+//     callback(result)
+//   } catch (e) {
+//     callback(e.message)
+//   } finally {
+//     connection.release()
+//   }
+// }
+
 const selectstore = async () => {
-  return new Promise((resolve, reject) => {
-    const connection = dbConnection()
-    try {
-      const result = common_buttons.storename(connection)
-      console.log(result)
-      resolve(result)
-    } catch (e) {
-      console.log(e.message)
-      reject(e.message)
-    } finally {
-      connection.release()
+  const menu = []
+  const result = await new Promise(async (resolve, reject) => {
+    const connection = await dbConnection()
+    const temp = await common_buttons.storename(connection)
+    for (const i in temp) {
+      menu.push(temp[i].store_name)
     }
+    connection.release()
+    console.log(menu)
+    resolve(menu)  
   })
+  console.log('result', result)
+  return result
+}
+  
+module.exports = {
+  selectstore,
 }
