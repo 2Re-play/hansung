@@ -1,5 +1,5 @@
 const mysql = require('promise-mysql')
-const dbpool = require('../../config/dbPool')
+const dbpool = require('../config/dbPool')
 
 module.exports = function DBConnection() {
   return new Promise((resolve, reject) => {
