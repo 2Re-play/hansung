@@ -5,6 +5,6 @@ const messagectrl = require('../controller/messageController')
 const message = express.Router()
 
 /* GET home page. */
-message.get('/', messagectrl.message)
+message.post('/', messagectrl.message)
 
 module.exports = message
