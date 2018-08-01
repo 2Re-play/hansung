@@ -12,30 +12,22 @@ const first_respondJson = (obj, res, status) => {
 
 }
 // store_name 메뉴 버튼 선택
-const storename_respondJson = (obj, res, status) => {
+const storename_respondJson = (message, obj, res, status) => {
 
   console.log(status)
   res
     .status(status)
     .json({
-      type: 'buttons',
-      buttons: _.isEmpty(obj) ? [] : obj,
-    })
-      
+      message: {
+        text: message,
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj) ? [] : obj,
+      },
+    }) 
 }
-/*
-message: {
-      text: menu,
-      message_button: {
-        label: "메뉴 자세히 보기",
-        url: "http://www.uicoop.ac.kr/shop/shop.php?w=3"
-      }
-    },
-    keyboard: {
-      type: "buttons",
-      buttons: day
-    }
-*/
+
 const message_respondJson = (obj, res, status) => {
   console.log(status)
   res
