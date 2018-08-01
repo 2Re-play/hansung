@@ -6,9 +6,9 @@ exports.message = async (req, res) => {
   const { content } = req.body
   try {
     const result = await message_logic.selectmessage(content)
-    console.log('1', result)
     storename_respondJson(result, res, 200) 
   } catch (e) {
     respondOnError(e.message, res, 500)
+    console.log(e.message)
   }
 }
