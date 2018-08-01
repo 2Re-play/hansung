@@ -28,12 +28,15 @@ const storename_respondJson = (message, obj, res, status) => {
     }) 
 }
 // 처음으로 기능 응답
-const backTofirst_respondJson = (obj, res, status) => {
+const backTofirst_respondJson = (message, obj, res, status) => {
 
   console.log(status)
   res
     .status(status)
     .json({
+      message: {
+        text: message,
+      },
       keyboard: {
         type: 'buttons',
         buttons: _.isEmpty(obj) ? [] : obj,
@@ -49,12 +52,6 @@ const menulist_respondJson = (message, obj, res, status) => {
     .json({
       message: {
         text: `${message}\n${obj}`,
-      },
-      keyboard: {
-        type: 'buttons',
-        buttons: [
-          '처음으로',
-        ],
       },
     }) 
 }
