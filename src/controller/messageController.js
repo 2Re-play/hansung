@@ -1,5 +1,5 @@
 const message_logic = require('../logic/messageLogic')
-const { storename_respondJson, respondOnError } = require('../lib/response')
+const { storename_respondJson, menulist_respondJson, respondOnError } = require('../lib/response')
 
 // 최상위 버튼 요청들어왔을때
 exports.message = async (req, res) => {
@@ -10,6 +10,8 @@ exports.message = async (req, res) => {
     else if (content === '열람실') storename_respondJson('열람실 현황입니다.', result, res, 200) 
     else if (content === '버스 도착시간') storename_respondJson('버스 예상 도착 시간입니다.', result, res, 200) 
     else if (content === '학교날씨') storename_respondJson('한성대학교 날씨입니다.', result, res, 200) 
+    else if (content === 'ROll&Noodles') menulist_respondJson(`${content}의 메뉴입니다.`, result, res, 200)
+    else if (content === 'The bab') menulist_respondJson(`${content}의 메뉴입니다.`, result, res, 200)
   } catch (e) {
     respondOnError(e.message, res, 500)
     console.log(e.message)

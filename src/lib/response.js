@@ -28,6 +28,25 @@ const storename_respondJson = (message, obj, res, status) => {
     }) 
 }
 
+// store_name 메뉴 버튼 선택
+const menulist_respondJson = (message, obj, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: `${message}\n${obj}`,
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: [
+          '처음으로',
+        ],
+      },
+    }) 
+}
+
 const message_respondJson = (obj, res, status) => {
   console.log(status)
   res
@@ -63,5 +82,6 @@ module.exports = {
   first_respondJson,
   message_respondJson,
   storename_respondJson,
+  menulist_respondJson,
   respondOnError,
 }

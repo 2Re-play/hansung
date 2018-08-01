@@ -10,17 +10,32 @@ exports.selectmessage = async (content, err) => {
     else if (content === '열람실') result = await common_buttons.storename(connection)
     else if (content === '버스 도착시간')result = await common_buttons.storename(connection)
     else if (content === '학교날씨') result = await common_buttons.storename(connection)
+    else if (content === 'ROll&Noodles') result = await menu_list(content)
+    else if (content === 'The bab') result = await menu_list(content)
     else if (err) reject(err)
     resolve(result)
     connection.release()
   })
   return result
 }
-
+// 학생식당 메뉴 디비
 const selectstore = async () => {
   const connection = await dbConnection()
   try {
     const result = await common_buttons.storename(connection)
+    return result
+  } catch (e) {
+    console.log(e.message)
+    return e.message
+  } finally {
+    connection.release()
+  }
+}
+// 메뉴리스트 디비
+const menu_list = async (content) => {
+  const connection = await dbConnection()
+  try {
+    const result = await common_buttons.menuname(connection, content)
     return result
   } catch (e) {
     console.log(e.message)
