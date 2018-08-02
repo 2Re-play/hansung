@@ -36,6 +36,40 @@ exports.storename = (connection) => {
     })
   })
 } 
-
+// SELECT from_to, CONCAT('\n',time,'    ', running_time,'  ', datail,'\n' ) as packaging FROM shuttle_bus WHERE season = '학 기 중' 
+// 셔틀버스 운행시간
+exports.shuttle = (connection, content) => {
+  return new Promise((resolve, reject) => {
+    const shuttle_bus = []
+    const Query = ` 
+    SELECT CONCAT(from_to,'\n',time,'    ', running_time,'  ', datail,'\n' ) as packaging FROM shuttle_bus WHERE season = '${content}' 
+    `
+    connection.query(Query, (err, result) => {
+      for (const i in result) {
+        shuttle_bus.push(result[i].packaging)
+      }
+      console.log(shuttle_bus)
+      err && reject(err)
+      resolve(shuttle_bus)
+    })
+  })
+} 
+// 셔틀버스 기간
+exports.season = (connection) => {
+  return new Promise((resolve, reject) => {
+    const season = []
+    const Query = ` 
+    SELECT DISTINCT season FROM shuttle_bus
+    `
+    connection.query(Query, (err, result) => {
+      for (const i in result) {
+        season.push(result[i].season)
+      }
+      console.log(season)
+      err && reject(err)
+      resolve(season)
+    })
+  })
+} 
 
 // module.exports.RN = RN

@@ -18,27 +18,3 @@ exports.main_buttons = async (req, res) => {
     connection.release()
   }
 }
-/*
-// 사용자가 친구추가 했을 경우
-router.post('/friend', function(req, res){
-  var user_key = req.body.user_key;
-
-  res.status(200).json();
-});
-
-// 사용자가 친구삭제 했을 경우
-router.delete('/friend/:user_key', function(req, res){
-  var user_key = req.params.user_key;
-  //console.log(user_key + "가 친구 삭제");
-
-  res.status(200).json();
-});
-
-// 사용자가 채팅방을 나갔을 경우
-router.delete('/chat_room/:user_key', function(req, res){
-  var user_key = req.params.user_key;
-  //console.log(user_key + "가 채팅방 나감");
-
-  res.status(200).json();
-});
-*/

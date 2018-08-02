@@ -14,31 +14,4 @@ exports.main = (connection) => {
       resolve(menu)
     })
   })
-} 
-// function mb(callback) {
-//   pool.getConnection((err, connection) => {
-//     if (err) {
-//       res.status(500).send({
-//         message: 'database connection error',
-//       })
-//       connection.release()
-//     } else {
-//       const sql = 'SELECT buttons_name FROM Mainbuttons'
-//       connection.query(sql, (err, rows, result) => {
-//         if (err) {
-//           res.status(500).send({
-//             message: 'mainbuttons select error',
-//           })
-//           connection.release()
-//         } else {
-//           const menu = []
-//           for (let i = 0; i < rows.length; i++) {
-//             menu.push(rows[i].buttons_name)
-//           }
-//           callback(null, menu)
-//           connection.release()
-//         }
-//       })
-//     }
-//   })
-// }
+}
