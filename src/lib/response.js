@@ -60,25 +60,15 @@ const menulist_respondJson = (message, obj, obj2, res, status) => {
     }) 
 }
 
-const message_respondJson = (obj, res, status) => {
+const out_respondJson = (message, res, status) => {
   console.log(status)
   res
     .status(status)
     .json({
-      message: {
-        text: obj,
-        message_button: {
-          label: '메뉴 자세히 보기',
-          url: 'http://www.hansung.ac.kr/web/www/life_03_01_t1',
-        },
-      },
-    //   keyboard: {
-    //     type: 'buttons',
-    //     buttons: day,
-    //   },
+      message,
     })
+  
 }
-
 
 const respondOnError = (message, res, status) => {
   console.log(status)
@@ -93,7 +83,7 @@ const respondOnError = (message, res, status) => {
   
 module.exports = {  
   first_respondJson,
-  message_respondJson,
+  out_respondJson,
   storename_respondJson,
   menulist_respondJson,
   backTofirst_respondJson,
