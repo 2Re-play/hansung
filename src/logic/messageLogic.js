@@ -39,8 +39,13 @@ const selectstore = async () => {
 const menu_list = async (content) => {
   const connection = await dbConnection()
   try {
-    const result = await common_buttons.menuname(connection, content)
-    return result
+    const info = {
+      data1: await common_buttons.menuname(connection, content),
+      data2: await common_buttons.storename(connection),
+    }
+    info.data2.push('처음으로')
+    console.log(info)
+    return info
   } catch (e) {
     console.log(e.message)
     return e.message

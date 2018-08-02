@@ -44,7 +44,7 @@ const backTofirst_respondJson = (message, obj, res, status) => {
     }) 
 }
 // store_name 메뉴 버튼 선택
-const menulist_respondJson = (message, obj, res, status) => {
+const menulist_respondJson = (message, obj, obj2, res, status) => {
 
   console.log(status)
   res
@@ -52,6 +52,10 @@ const menulist_respondJson = (message, obj, res, status) => {
     .json({
       message: {
         text: `${message}\n${obj}`,
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj2) ? [] : obj2,
       },
     }) 
 }
