@@ -40,7 +40,6 @@ const menu_list = async (content) => {
   const connection = await dbConnection()
   try {
     const result = await common_buttons.menuname(connection, content)
-    result.push('처음으로')
     return result
   } catch (e) {
     console.log(e.message)
