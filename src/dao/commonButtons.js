@@ -65,6 +65,7 @@ exports.season = (connection) => {
       for (const i in result) {
         season.push(result[i].season)
       }
+      season.push('처음으로')
       console.log(season)
       err && reject(err)
       resolve(season)

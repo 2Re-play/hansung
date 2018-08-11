@@ -23,9 +23,9 @@ exports.selectMessage = async (content, err) => {
   await new Promise(async (resolve, reject) => {
     const connection = await dbConnection()
     if (content === '학생식당 메뉴') result = await selectStore(connection)
-    else if (content === '셔틀버스 시간') result = await season(connection)
+    else if (content === '셔틀버스 시간') result = await commonButtons.season(connection)
     else if (content === '학 기 중') result = await shuttleBus(connection, content)
-    else if (content === '방     중') result = await shuttleBus(connection, content)
+    else if (content === '방 학 중') result = await shuttleBus(connection, content)
     else if (content === '마을버스 시간')result = await commonButtons.busKind(connection)
     else if (content === '한성대입구역 -> 한성대 정문') result = await busInfo(connection, content)
     else if (content === '한성대 정문 -> 삼선교, 한성대입구역') result = await busInfo(connection, content)
@@ -80,7 +80,6 @@ const shuttleBus = async (connection, content) => {
       data1: await commonButtons.shuttle(connection, content),
       data2: await commonButtons.season(connection),
     }
-    info.data2.push('처음으로')
     console.log(info)
     return info
   } catch (e) {

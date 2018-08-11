@@ -27,6 +27,22 @@ const storeNameRespondJson = (message, obj, res, status) => {
       },
     }) 
 }
+// store_name 메뉴 버튼 선택
+const shuttlBus = (message, obj, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: message,
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj) ? [] : obj,
+      },
+    }) 
+}
 // 처음으로 기능 응답
 const backToFirstRespondJson = (message, obj, res, status) => {
 
@@ -123,6 +139,7 @@ module.exports = {
   firstRespondJson,
   outRespondJson,
   storeNameRespondJson,
+  shuttlBus,
   menuListRespondJson,
   backToFirstRespondJson,
   respondOnError,
