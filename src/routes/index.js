@@ -10,7 +10,7 @@ const router = express.Router()
 /* GET home page. */
 router.use('/keyboard', keyboard)
 router.use('/message', message)
-router.use('/chatRoom', chatRoom)
+router.use('/chat_room', chatRoom)
 router.use('/friend', friend)
 // router.use('/restaurant', restaurant)
 
