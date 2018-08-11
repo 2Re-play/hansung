@@ -1,11 +1,11 @@
 const express = require('express')
 
-const friendctrl = require('../controller/friendController')
+const friendCtrl = require('../controller/friendController')
 
 const firend = express.Router()
 
 /* GET home page. */
-firend.post('/', friendctrl.plus_friend)
-firend.delete('/', friendctrl.delete_friend)
+firend.post('/', friendCtrl.plusFriend)
+firend.delete('/', friendCtrl.deleteFriend)
 
 module.exports = firend

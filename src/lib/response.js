@@ -1,6 +1,6 @@
 const _ = require('lodash')
 // Home Keyboard API
-const first_respondJson = (obj, res, status) => {
+const firstRespondJson = (obj, res, status) => {
 
   console.log(status)
   res
@@ -12,7 +12,7 @@ const first_respondJson = (obj, res, status) => {
 
 }
 // store_name 메뉴 버튼 선택
-const storename_respondJson = (message, obj, res, status) => {
+const storeNameRespondJson = (message, obj, res, status) => {
 
   console.log(status)
   res
@@ -28,7 +28,7 @@ const storename_respondJson = (message, obj, res, status) => {
     }) 
 }
 // 처음으로 기능 응답
-const backTofirst_respondJson = (message, obj, res, status) => {
+const backToFirstRespondJson = (message, obj, res, status) => {
 
   console.log(status)
   res
@@ -44,7 +44,7 @@ const backTofirst_respondJson = (message, obj, res, status) => {
     }) 
 }
 // store_name 메뉴 버튼 선택
-const menulist_respondJson = (message, obj, obj2, res, status) => {
+const menuListRespondJson = (message, obj, obj2, res, status) => {
 
   console.log(status)
   res
@@ -60,7 +60,7 @@ const menulist_respondJson = (message, obj, obj2, res, status) => {
     }) 
 }
 
-const out_respondJson = (message, res, status) => {
+const outRespondJson = (message, res, status) => {
   console.log(status)
   res
     .status(status)
@@ -81,11 +81,51 @@ const respondOnError = (message, res, status) => {
   
 }
   
+const expectBusRespondJson = (message, obj, obj2, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: `${message}\n${obj.busNum} : 첫번째 도착버스 ${obj.time1} 두번째 도착버스 : ${obj.time2}`, // 수정
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj2) ? [] : obj2,
+      },
+    }) 
+}
+
+// store_name 메뉴 버튼 선택
+const arriveBuslistRespondJson = (message, obj, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: `${message}\n${obj}`,
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: [
+          '한성대입구역 -> 한성대 정문',
+          '한성대 정문 -> 삼선교, 한성대입구역',
+          '창신역 -> 한성대 후문',
+          '한성대 후문 -> 창신역',
+          '처음으로',
+        ],
+      },
+    }) 
+}
 module.exports = {  
-  first_respondJson,
-  out_respondJson,
-  storename_respondJson,
-  menulist_respondJson,
-  backTofirst_respondJson,
+  firstRespondJson,
+  outRespondJson,
+  storeNameRespondJson,
+  menuListRespondJson,
+  backToFirstRespondJson,
   respondOnError,
+  expectBusRespondJson,
+  arriveBuslistRespondJson,
 }
