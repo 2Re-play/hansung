@@ -2,9 +2,8 @@ const request = require('request')
 const cheerio = require('cheerio')
 const opendata = require('../../config/serviceKey')
 
-exports.busData = async (arsId) => {
+exports.busData1 = async (arsId) => {
   let busInfo
-  console.log('잘 들어온다', arsId[0].bus_arsId)
   const url = 'http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid'
   const queryParams = `?ServiceKey=${opendata.serviceKey}&arsId=${arsId[0].bus_arsId}` /* 정류소고유번호 */    
   const option = {
@@ -25,6 +24,40 @@ exports.busData = async (arsId) => {
           time2,
           busNum,
         }
+        if (e) reject(e)
+        else resolve(busInfo)
+        console.log(busInfo)
+      })
+    })
+  })
+  return busInfo
+}
+
+exports.busData2 = async (arsId) => {
+  let busInfo
+  const url = 'http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid'
+  const queryParams = `?ServiceKey=${opendata.serviceKey}&arsId=${arsId[0].bus_arsId}` /* 정류소고유번호 */    
+  const option = {
+    uri: url + queryParams,
+    method: 'GET',
+  }
+  await new Promise(async (resolve, reject) => {
+    request(option, (e, response, body) => {
+      const $ = cheerio.load(body, {
+        decodeEntities: false,
+      })
+      $('itemList').each(function () {
+        const time1 = $(this).find('arrmsg1').text()
+        const time2 = $(this).find('arrmsg2').text()
+        const busNum = $(this).find('rtNm').text()
+        if (busNum === '성북02') {
+          busInfo = {
+            time1,
+            time2,
+            busNum,
+          }
+          console.log('filtering ', busInfo)
+        } else return
         if (e) reject(e)
         else resolve(busInfo)
         console.log(busInfo)
