@@ -33,8 +33,8 @@ exports.storeName = (connection) => {
       console.log(store_name)
       err && reject(err)
       resolve(store_name)
-      connection.release()
     })
+    connection.release()
   })
 } 
 // SELECT from_to, CONCAT('\n',time,'    ', running_time,'  ', datail,'\n' ) as packaging FROM shuttleBus WHERE season = '학 기 중' 
@@ -70,8 +70,8 @@ exports.season = (connection) => {
       console.log(season)
       err && reject(err)
       resolve(season)
-      connection.release()
     })
+    connection.release()
   })
 }
 
@@ -105,7 +105,7 @@ exports.busKind = (connection) => {
       console.log(busKind)
       err && reject(err)
       resolve(busKind)
-      connection.release()
     })
+    connection.release()
   })
 } 
