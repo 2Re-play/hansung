@@ -9,7 +9,6 @@ exports.mainButtons = async (req, res) => {
   const connection = await dbConnection()
   try {
     main_ = await mainButtons.main(connection)
-
     console.log('디비 메인 버튼 : ', main_)
     response.firstRespondJson(main_, res, 200)
   } catch (e) {
