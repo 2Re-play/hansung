@@ -34,7 +34,6 @@ exports.storeName = (connection) => {
       err && reject(err)
       resolve(store_name)
     })
-    connection.release()
   })
 } 
 // SELECT from_to, CONCAT('\n',time,'    ', running_time,'  ', datail,'\n' ) as packaging FROM shuttleBus WHERE season = '학 기 중' 
@@ -71,7 +70,6 @@ exports.season = (connection) => {
       err && reject(err)
       resolve(season)
     })
-    connection.release()
   })
 }
 
@@ -106,6 +104,5 @@ exports.busKind = (connection) => {
       err && reject(err)
       resolve(busKind)
     })
-    connection.release()
   })
 } 
