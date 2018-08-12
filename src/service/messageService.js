@@ -138,7 +138,8 @@ const busInfo1 = async (connection, content) => {
     const result1 = await commonButtons.busId(connection, content)
     const bus = await busData.busData1(result1)
     const buttons = await commonButtons.busKind(connection)
-   
+    buttons.push('처음으로')
+    
     const data = {
       bus,
       buttons,
@@ -157,7 +158,8 @@ const busInfo2 = async (connection, content) => {
     const result1 = await commonButtons.busId(connection, content)
     const bus = await busData.busData2(result1)
     const buttons = await commonButtons.busKind(connection)
-   
+    buttons.push('처음으로')
+
     const data = {
       bus,
       buttons,
