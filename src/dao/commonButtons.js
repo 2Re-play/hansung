@@ -33,6 +33,7 @@ exports.storeName = (connection) => {
       console.log(store_name)
       err && reject(err)
       resolve(store_name)
+      connection.release()
     })
   })
 } 
@@ -69,6 +70,7 @@ exports.season = (connection) => {
       console.log(season)
       err && reject(err)
       resolve(season)
+      connection.release()
     })
   })
 }
@@ -103,6 +105,7 @@ exports.busKind = (connection) => {
       console.log(busKind)
       err && reject(err)
       resolve(busKind)
+      connection.release()
     })
   })
 } 

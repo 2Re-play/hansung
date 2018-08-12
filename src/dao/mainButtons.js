@@ -12,6 +12,7 @@ exports.main = (connection) => {
       console.log(menu)
       err && reject(err)
       resolve(menu)
+      connection.release()
     })
   })
 }
