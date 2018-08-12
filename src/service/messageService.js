@@ -94,6 +94,7 @@ const shuttleBus = async (connection, content) => {
       data1: await commonButtons.shuttle(connection, content),
       data2: await commonButtons.season(connection),
     }
+    info.data2.push('처음으로')
     console.log(info)
     return info
   } catch (e) {
