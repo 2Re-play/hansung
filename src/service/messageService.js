@@ -44,7 +44,6 @@ exports.selectMessage = async (content, err) => {
 const main = async (connection) => {
   try {
     const result = await mainButtons.main(connection)
-    result.push('처음으로')
     console.log(result)
     return result
   } catch (e) {
