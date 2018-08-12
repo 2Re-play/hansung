@@ -13,6 +13,5 @@ exports.main = (connection) => {
       err && reject(err)
       resolve(menu)
     })
-    connection.release()
   })
 }
