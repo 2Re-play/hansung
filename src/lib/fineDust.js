@@ -21,17 +21,17 @@ exports.air = async () => {
     method: 'GET',
   }
   await new Promise(async (resolve, reject) => {
-    request(option, function (e, response, body) {
+    request(option, (e, response, body) => {
       data = body
       data = JSON.parse(body)
       const time = data.list[0].dataTime
       const dust = data.list[0].pm10Value
       let dustStatus
 
-      if (dust < 30) dustStatus = '좋음'
-      else if (dust > 30 && dust < 80) dustStatus = '보통'
-      else if (dust > 80 && dust < 150) dustStatus = '나쁨'
-      else if (dust > 150) dustStatus = '매우나쁨'
+      if (dust < 30) dustStatus = '좋음😆'
+      else if (dust > 30 && dust < 80) dustStatus = '보통🙂'
+      else if (dust > 80 && dust < 150) dustStatus = '나쁨😫'
+      else if (dust > 150) dustStatus = '매우나쁨😡'
       info = {
         time,
         dust,
