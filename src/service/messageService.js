@@ -1,8 +1,11 @@
+
 const commonButtons = require('../dao/commonButtons')
-const dbConnection = require('../lib/dbConnection')
+const { getConnection } = require('../lib/dbConnection')
 const busData = require('../lib/arriveBus')
 const mainButtons = require('../dao/mainButtons')
 const fineDust = require('../lib/fineDust')
+
+
 /*
     창신역 - > 한성대 후문
         종로 03번
@@ -23,7 +26,7 @@ exports.selectMessage = async (content, err) => {
   let result 
   await new Promise(async (resolve, reject) => {
 
-    const connection = await dbConnection()
+    const connection = await getConnection()
     if (content === '학생식당 메뉴') result = await selectStore(connection)
     else if (content === '셔틀버스 시간') result = await season(connection)
     else if (content === '학 기 중') result = await shuttleBus(connection, content)
@@ -42,6 +45,7 @@ exports.selectMessage = async (content, err) => {
   })
   return result
 }
+
 
 const main = async (connection) => {
   try {
@@ -71,7 +75,7 @@ const selectStore = async (connection) => {
 }
 // 메뉴리스트 디비
 const menuList = async (content) => {
-  const connection = await dbConnection()
+  const connection = await getConnection()
   try {
     const info = {
       data1: await commonButtons.menuName(connection, content),

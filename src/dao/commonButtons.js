@@ -5,7 +5,7 @@ exports.menuName = (connection, content) => {
     const menuList = []
     console.log('content', content)
     const Query = ` 
-    SELECT CONCAT(menu,' : ', price,'\n') as packaging FROM restraurant WHERE store_name = '${content}'
+    SELECT CONCAT(menu,' : ', price'\n') as packaging FROM restraurant WHERE store_name = '${content}'
     `
     connection.query(Query, (err, result) => {
       console.log(Query)
