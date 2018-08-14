@@ -1,8 +1,8 @@
-const express = require('express')
+const { Router } = require('express')
 
 const chatRoomCtrl = require('../controller/chatRoomController')
 
-const chatRoom = express.Router()
+const chatRoom = Router()
 
 /* GET home page. */
 chatRoom.delete('/:user_key', chatRoomCtrl.outChat)

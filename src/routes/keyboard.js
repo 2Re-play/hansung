@@ -1,8 +1,8 @@
-const express = require('express')
+const { Router } = require('express')
 
 const keyboardCtrl = require('../controller/keyboardController')
 
-const keyboard = express.Router()
+const keyboard = Router()
 
 /* GET home page. */
 keyboard.get('/', keyboardCtrl.mainButtons)

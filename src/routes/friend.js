@@ -1,8 +1,8 @@
-const express = require('express')
+const { Router } = require('express')
 
 const friendCtrl = require('../controller/friendController')
 
-const firend = express.Router()
+const firend = Router()
 
 /* GET home page. */
 firend.post('/', friendCtrl.plusFriend)

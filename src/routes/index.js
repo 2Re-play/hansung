@@ -1,11 +1,11 @@
-const express = require('express')
+const { Router } = require('express')
 const keyboard = require('./keyboard')
 const message = require('./message')
 const chatRoom = require('./chatRoom')
 const friend = require('./friend')
 // const restaurant = require('./restaurant')
 
-const router = express.Router()
+const router = Router()
 
 /* GET home page. */
 router.use('/keyboard', keyboard)

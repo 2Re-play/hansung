@@ -190,7 +190,6 @@ const air = async (connection) => {
   try {  
     const data = await mainButtons.main(connection)
     const dust = await fineDust.air()
-    data.push('처음으로')
     const result = {
       data,
       dust,
