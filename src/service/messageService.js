@@ -77,9 +77,15 @@ const selectStore = async (connection) => {
 const menuList = async (content) => {
   const connection = await getConnection()
   try {
+    let data1 = '';
+    const temp = await commonButtons.menuName(connection, content)
+    const data2 = await commonButtons.storeName(connection)
+    temp.forEach(item => {
+      data1 += item
+    })
     const info = {
-      data1: await commonButtons.menuName(connection, content),
-      data2: await commonButtons.storeName(connection),
+      data1,
+      data2,
     }
     info.data2.push('처음으로')
     console.log(info)
