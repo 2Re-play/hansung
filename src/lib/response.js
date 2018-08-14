@@ -135,6 +135,25 @@ const arriveBuslistRespondJson = (message, obj, res, status) => {
       },
     }) 
 }
+
+// 미세먼지 응답메시지
+const fineDustRespondJson = (message, obj, obj2, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: `${message}\n미세먼지 농도: ${obj.dust}㎍/㎥ (${obj.dustStatus})\n ${obj.time}기준`, // 수정
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj2) ? [] : obj2,
+      },
+    })
+}
+
+
 module.exports = {  
   firstRespondJson,
   outRespondJson,
@@ -145,4 +164,5 @@ module.exports = {
   respondOnError,
   expectBusRespondJson,
   arriveBuslistRespondJson,
+  fineDustRespondJson,
 }

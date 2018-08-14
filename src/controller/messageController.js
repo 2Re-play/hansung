@@ -10,6 +10,7 @@ exports.message = async (req, res) => {
     if (content === '학생식당 메뉴') response.storeNameRespondJson('식당을 선택해주세요.\n', result, res, 200) 
     else if (content === '열람실') response.storeNameRespondJson('열람실 현황입니다.\n', result, res, 200) 
     else if (content === '셔틀버스 시간') response.shuttlBus('셔틀버스 운영기간을 선택해주세요!\n', result, res, 200)
+    else if (content === '한성대 미세먼지') response.fineDustRespondJson('한성대학교 미세먼지 정보입니다!\n', result.dust, result.data, res, 200)
     else if (content === '한성대입구역 -> 한성대') response.expectBusRespondJson('한성대입구역 -> 한성대 후문 방향 마을버스 도착예정 시간입니다.\n', result.bus, result.buttons, res, 200)
     else if (content === '한성대 정문 -> 삼선교, 성북문화원 정류장') response.expectBusRespondJson('한성대 정문 -> 삼선교, 성북문화원 정류장 방향 마을버스 도착예정 시간입니다.\n', result.bus, result.buttons, res, 200)
     else if (content === '창신역 -> 한성대 후문') response.expectBusRespondJson('창신역 -> 한성대 후문 방향 마을버스 도착예정 시간입니다.\n', result.bus, result.buttons, res, 200)

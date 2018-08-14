@@ -7,17 +7,21 @@
     "start:dev": "NODE_ENV=development NODE_PATH=src nodemon ../bin/www"
   },
   "dependencies": {
+    "charset": "^1.0.1",
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
+    "iconv-lite": "^0.4.23",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
     "nodemon": "^1.18.3",
     "promise-mysql": "^3.3.1",
-    "request": "^2.87.0"
+    "querystring": "^0.2.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

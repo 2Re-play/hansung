@@ -2,6 +2,7 @@ const commonButtons = require('../dao/commonButtons')
 const dbConnection = require('../lib/dbConnection')
 const busData = require('../lib/arriveBus')
 const mainButtons = require('../dao/mainButtons')
+const fineDust = require('../lib/fineDust')
 /*
     창신역 - > 한성대 후문
         종로 03번
@@ -21,6 +22,7 @@ const mainButtons = require('../dao/mainButtons')
 exports.selectMessage = async (content, err) => {
   let result 
   await new Promise(async (resolve, reject) => {
+
     const connection = await dbConnection()
     if (content === '학생식당 메뉴') result = await selectStore(connection)
     else if (content === '셔틀버스 시간') result = await season(connection)
@@ -31,7 +33,7 @@ exports.selectMessage = async (content, err) => {
     else if (content === '한성대 정문 -> 삼선교, 성북문화원 정류장') result = await busInfo2(connection, content)
     else if (content === '창신역 -> 한성대 후문') result = await busInfo1(connection, content)
     else if (content === '한성대 후문 -> 창신역') result = await busInfo1(connection, content)
-    else if (content === '한성대 미세먼지') result = await selectStore(connection)
+    else if (content === '한성대 미세먼지') result = await air(connection)
     else if (content === 'ROll&Noodles') result = await menuList(content)
     else if (content === 'The bab') result = await menuList(content)
     else if (content === '처음으로') result = await main(connection)
@@ -139,7 +141,7 @@ const busInfo1 = async (connection, content) => {
     const bus = await busData.busData1(result1)
     const buttons = await commonButtons.busKind(connection)
     buttons.push('처음으로')
-    
+
     const data = {
       bus,
       buttons,
@@ -165,6 +167,26 @@ const busInfo2 = async (connection, content) => {
       buttons,
     }
     return data
+  } catch (e) {
+    console.log(e.message)
+    return e.message
+  } finally {
+    connection.release()
+  }
+}
+
+// 한성대 미세먼지
+const air = async (connection) => {
+  try {  
+    const data = await mainButtons.main(connection)
+    const dust = await fineDust.air()
+    data.push('처음으로')
+    const result = {
+      data,
+      dust,
+    }
+    console.log(result)
+    return result
   } catch (e) {
     console.log(e.message)
     return e.message
