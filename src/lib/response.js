@@ -113,29 +113,6 @@ const expectBusRespondJson = (message, obj, obj2, res, status) => {
     }) 
 }
 
-// store_name 메뉴 버튼 선택
-const arriveBuslistRespondJson = (message, obj, res, status) => {
-
-  console.log(status)
-  res
-    .status(status)
-    .json({
-      message: {
-        text: `${message}\n${obj}`,
-      },
-      keyboard: {
-        type: 'buttons',
-        buttons: [
-          '한성대입구역 -> 한성대 정문',
-          '한성대 정문 -> 삼선교, 한성대입구역',
-          '창신역 -> 한성대 후문',
-          '한성대 후문 -> 창신역',
-          '처음으로',
-        ],
-      },
-    }) 
-}
-
 // 미세먼지 응답메시지
 const fineDustRespondJson = (message, obj, obj2, res, status) => {
 
@@ -163,6 +140,5 @@ module.exports = {
   backToFirstRespondJson,
   respondOnError,
   expectBusRespondJson,
-  arriveBuslistRespondJson,
   fineDustRespondJson,
 }

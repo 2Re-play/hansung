@@ -21,7 +21,7 @@ exports.air = async () => {
     method: 'GET',
   }
   await new Promise(async (resolve, reject) => {
-    await request(option, async (e, response, body) => {
+    request(option, function (e, response, body) {
       data = body
       data = JSON.parse(body)
       const time = data.list[0].dataTime
@@ -44,7 +44,6 @@ exports.air = async () => {
         resolve(info)
       }
     })
-
   })
   return info
 }
