@@ -37,6 +37,7 @@ node_modules/
 config/
 jspm_packages/
 .vscode/
+.idea/
 
 # TypeScript v1 declaration files
 typings/

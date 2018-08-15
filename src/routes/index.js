@@ -12,6 +12,5 @@ router.use('/keyboard', keyboard)
 router.use('/message', message)
 router.use('/chat_room', chatRoom)
 router.use('/friend', friend)
-// router.use('/restaurant', restaurant)
 
 module.exports = router

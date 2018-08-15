@@ -26,7 +26,6 @@ exports.busData1 = async (arsId) => {
         }
         if (e) reject(e)
         else resolve(busInfo)
-        console.log(busInfo)
       })
     })
   })
@@ -60,7 +59,6 @@ exports.busData2 = async (arsId) => {
         } else return
         if (e) reject(e)
         else resolve(busInfo)
-        console.log(busInfo)
       })
     })
   })

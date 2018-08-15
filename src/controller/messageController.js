@@ -6,7 +6,6 @@ exports.message = async (req, res) => {
   const { content } = req.body
   try { 
     const result = await message_logic.selectMessage(content)
-    console.log('xxxxxxxxx', result)
     if (content === '학생식당 메뉴') response.storeNameRespondJson('식당을 선택해주세요.\n', result, res, 200) 
     else if (content === '열람실') response.storeNameRespondJson('열람실 현황입니다.\n', result, res, 200) 
     else if (content === '셔틀버스 시간') response.shuttlBus('셔틀버스 운영기간을 선택해주세요!\n', result, res, 200)
