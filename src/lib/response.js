@@ -130,6 +130,38 @@ const fineDustRespondJson = (message, obj, obj2, res, status) => {
     })
 }
 
+const libRespondJson = (message, obj, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: message,
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj) ? [] : obj,
+      },
+    })
+}
+
+const libStatusRespondJson = (message, obj, obj2, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: `${message}\n 총 좌석 : ${obj.total} \n 사용 좌석 : ${obj.desk}\n 잔여 좌석 : ${obj.remainder}`, // 수정
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj2) ? [] : obj2,
+      },
+    })
+}
+
 
 module.exports = {  
   firstRespondJson,
@@ -141,4 +173,6 @@ module.exports = {
   respondOnError,
   expectBusRespondJson,
   fineDustRespondJson,
+  libRespondJson,
+  libStatusRespondJson,
 }
