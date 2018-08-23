@@ -89,9 +89,15 @@ const menuList = async (content) => {
 // 셔틀버스
 const shuttleBus = async (connection, content) => {
   try {
+    let data1 = ''
+    const temp = await commonButtons.shuttle(connection, content)
+    const data2 = await commonButtons.season(connection)
+    temp.forEach(item => {
+      data1 += item
+    })
     const info = {
-      data1: await commonButtons.shuttle(connection, content),
-      data2: await commonButtons.season(connection),
+      data1,
+      data2,
     }
     info.data2.push('처음으로')
     return info
