@@ -4,6 +4,7 @@ const { getConnection } = require('../lib/dbConnection')
 const busData = require('../lib/arriveBus')
 const mainButtons = require('../dao/mainButtons')
 const fineDust = require('../lib/fineDust')
+const lib = require('../lib/librarySeat')
 
 
 // 최상위 버튼 선택 
@@ -25,6 +26,10 @@ exports.selectMessage = async (content, err) => {
     else if (content === '한성대 미세먼지') result = await air(connection)
     else if (content === 'ROll&Noodles') result = await menuList(content)
     else if (content === 'The bab') result = await menuList(content)
+    else if (content === '열람실 좌석현황') result = await libName(connection)
+    else if (content === '제1열람실 (3층)') result = await libStatus(connection, content)
+    else if (content === '제2열람실 (4층)') result = await libStatus(connection, content)
+    else if (content === '우촌관열람실(101호)') result = await libStatus(connection, content)
     else if (content === '처음으로') result = await main(connection)
     else if (err) reject(err)
     resolve(result)
@@ -183,6 +188,46 @@ const air = async (connection) => {
     connection.release()
   }
 }
+
+// 열람실 이름
+const libName = async (connection) => {
+  try {
+    const buttons = await commonButtons.lib(connection)
+    buttons.push('처음으로')
+
+    const data = {
+      buttons,
+    }
+    return data
+  } catch (e) {
+    console.log(e.message)
+    return e.message
+  } finally {
+    connection.release()
+  }
+}
+
+// 열람실 현황
+
+const libStatus = async (connection, content) => {
+  try {
+    const result1 = await commonButtons.libDetail(connection, content)
+    const libData = await lib.libStatus(result1[0])
+    const buttons = await commonButtons.lib(connection)
+    buttons.push('처음으로')
+    const data = {
+      libData,
+      buttons,
+    }
+    return data
+  } catch (e) {
+    console.log(e.message)
+    return e.message
+  } finally {
+    connection.release()
+  }
+}
+
 
 /*
     창신역 - > 한성대 후문

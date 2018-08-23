@@ -19,6 +19,10 @@ exports.message = async (req, res) => {
     else if (content === '마을버스 시간') response.storeNameRespondJson('버스경로를 선택해주세요!\n', result, res, 200) 
     else if (content === 'ROll&Noodles') response.menuListRespondJson(`${content}의 메뉴입니다.\n`, result.data1, result.data2, res, 200)
     else if (content === 'The bab') response.menuListRespondJson(`${content}의 메뉴입니다.\n`, result.data1, result.data2, res, 200)
+    else if (content === '열람실 좌석현황') response.libRespondJson('잔여 좌석을 확인할 열람실을 선택해주세요!\n', result.buttons, res, 200)
+    else if (content === '제1열람실 (3층)') response.libStatusRespondJson(`${content}의 좌석 현황입니다.\n`, result.libData, result.buttons, res, 200)
+    else if (content === '제2열람실 (4층)') response.libStatusRespondJson(`${content}의 좌석 현황입니다.\n`, result.libData, result.buttons, res, 200)
+    else if (content === '우촌관열람실(101호)') response.libStatusRespondJson(`${content}의 좌석 현황입니다.\n`, result.libData, result.buttons, res, 200)
     else if (content === '처음으로') response.backToFirstRespondJson('이용하실 서비스를 선택해주세요!', result, res, 200)
   } catch (e) {
     response.respondOnError(e.message, res, 500)

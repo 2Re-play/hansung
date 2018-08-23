@@ -12,7 +12,6 @@ exports.menuName = (connection, content) => {
       for ( let i in result) {
         menuList.push(result[i].packaging)
       }
-      console.log(menuList)
       err && reject(err)
       resolve(menuList)
     })
@@ -30,7 +29,6 @@ exports.storeName = (connection) => {
       for (const i in result) {
         store_name.push(result[i].store_name)
       }
-      console.log(store_name)
       err && reject(err)
       resolve(store_name)
     })
@@ -48,7 +46,6 @@ exports.shuttle = (connection, content) => {
       for (const i in result) {
         shuttleBus.push(result[i].packaging)
       }
-      console.log(shuttleBus)
       err && reject(err)
       resolve(shuttleBus)
     })
@@ -65,7 +62,6 @@ exports.season = (connection) => {
       for (const i in result) {
         season.push(result[i].season)
       }
-      console.log(season)
       err && reject(err)
       resolve(season)
     })
@@ -79,7 +75,6 @@ exports.busId = (connection, content) => {
     SELECT bus_arsId FROM village_bus WHERE bus_path = '${content}'
     `
     connection.query(Query, (err, result) => {
-      console.log(result)
       err && reject(err)
       resolve(result)
     })
@@ -98,9 +93,42 @@ exports.busKind = (connection) => {
       for (const i in result) {
         busKind.push(result[i].bus_path)
       }
-      console.log(busKind)
       err && reject(err)
       resolve(busKind)
     })
   })
-} 
+}
+// 열람실
+exports.libDetail = (connection, content) => {
+  return new Promise((resolve, reject) => {
+    const library = []
+    const Query = ` 
+    SELECT library_number FROM library WHERE library_name = '${content}'
+    `
+    connection.query(Query, (err, result) => {
+      for (const i in result) {
+        library.push(result[i].library_number)
+      }
+      err && reject(err)
+      resolve(library)
+    })
+  })
+}
+
+exports.lib = (connection) => {
+  return new Promise((resolve, reject) => {
+    const lib = []
+    const Query = ` 
+    SELECT library_name FROM library
+    `
+    connection.query(Query, (err, result) => {
+      console.log(result)
+      for (const i in result) {
+        lib.push(result[i].library_name)
+      }
+      err && reject(err)
+      resolve(lib)
+    })
+  })
+}
+// SELECT library_name FROM library
