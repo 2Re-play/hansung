@@ -9,6 +9,7 @@ module.exports = {
       pool.getConnection((err, connection) => {
         if (err) {
           reject(err)
+          console.log(err)
         } else {
           resolve(connection)
         }

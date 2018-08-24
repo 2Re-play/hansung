@@ -6,6 +6,6 @@ const firend = Router()
 
 /* GET home page. */
 firend.post('/', friendCtrl.plusFriend)
-firend.delete('/', friendCtrl.deleteFriend)
+firend.delete('/:user_key', friendCtrl.deleteFriend)
 
 module.exports = firend
