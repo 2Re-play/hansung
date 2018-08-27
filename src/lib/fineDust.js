@@ -1,4 +1,4 @@
-const request = require('request-promise')
+const request = require('request')
 const qs = require('querystring')
 const opendata = require('../../config/serviceKey')
 /*
