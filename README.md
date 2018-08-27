@@ -1,6 +1,6 @@
 # [한성대 거북이](http://pf.kakao.com/_DwzLC)
 
-![1](./images/한성대 거북이.jpeg)
+<img width="250"  src="./images/logo.jpeg">
 
 * 한성대학교 학생들을 위한 챗봇 한성대 거북이 서버 개발 레파지토리
 
@@ -28,14 +28,14 @@
 ---
 # 서비스 이용 뷰
 
-![1](./images/image_1.jpeg)
-![2](./images/image_2.jpeg)
-![3](./images/image_3.jpeg)
-![4](./images/image_4.jpeg)
-![5](./images/image_5.jpeg)
-![6](./images/image_6.jpeg)
-
-
+<div>
+<img width="250"  src="./images/image_1.jpeg">
+<img width="250"  src="./images/image_2.jpeg">
+<img width="250"  src="./images/image_3.jpeg">
+<img width="250"  src="./images/image_4.jpeg">
+<img width="250"  src="./images/image_5.jpeg">
+<img width="250"  src="./images/image_6.jpeg">
+</div>
 ---
 
 # 개발 환경
