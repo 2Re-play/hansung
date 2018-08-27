@@ -23,6 +23,8 @@ exports.selectMessage = async (content, err) => {
     else if (content === '한성대 정문 -> 삼선교, 성북문화원 정류장') result = await busInfo2(connection, content)
     else if (content === '창신역 -> 한성대 후문') result = await busInfo1(connection, content)
     else if (content === '한성대 후문 -> 창신역') result = await busInfo1(connection, content)
+    else if (content === '동묘역 -> 한성대 후문') result = await busInfo1(connection, content)
+    else if (content === '동대문역 -> 한성대 후문') result = await busInfo3(connection, content)
     else if (content === '한성대 미세먼지') result = await air(connection)
     else if (content === 'ROll&Noodles') result = await menuList(content)
     else if (content === 'The bab') result = await menuList(content)
@@ -158,9 +160,29 @@ const busInfo1 = async (connection, content) => {
 }
 
 const busInfo2 = async (connection, content) => {
-  try {  
+  try {
     const result1 = await commonButtons.busId(connection, content)
     const bus = await busData.busData2(result1)
+    const buttons = await commonButtons.busKind(connection)
+    buttons.push('처음으로')
+
+    const data = {
+      bus,
+      buttons,
+    }
+    return data
+  } catch (e) {
+    console.log(e.message)
+    return e.message
+  } finally {
+    connection.release()
+  }
+}
+
+const busInfo3 = async (connection, content) => {
+  try {
+    const result1 = await commonButtons.busId(connection, content)
+    const bus = await busData.busData3(result1)
     const buttons = await commonButtons.busKind(connection)
     buttons.push('처음으로')
 
