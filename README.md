@@ -26,7 +26,7 @@
 * 열람실 좌석 현황
 
 ---
-# 서비스 이용 뷰
+# 스크린샷
 
 <div>
 <img width="250"  src="./images/image_1.jpeg">
