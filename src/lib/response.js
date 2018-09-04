@@ -154,10 +154,10 @@ const libStatusRespondJson = (message, obj, obj2, obj3, res, status) => {
     .json({
       message: {
         text: `${message}\n\n 총 좌석 : ${obj.total} \n 사용 좌석 : ${obj.desk}\n 잔여 좌석 : ${obj.remainder}`, // 수정
-      },
-      message_button: {
-        label: message,
-        url: obj3.address,
+        message_button: {
+          label: message,
+          url: obj3.address,
+        },
       },
       keyboard: {
         type: 'buttons',
