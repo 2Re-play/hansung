@@ -28,6 +28,7 @@ exports.selectMessage = async (content, err) => {
     else if (content === '한성대 미세먼지') result = await air(connection)
     else if (content === 'ROll&Noodles') result = await menuList(content)
     else if (content === 'The bab') result = await menuList(content)
+    else if (content === 'Fry&Rice') result = await menuList(content)
     else if (content === '열람실 좌석현황') result = await libName(connection)
     else if (content === '제1열람실 (3층)') result = await libStatus(connection, content)
     else if (content === '제2열람실 (4층)') result = await libStatus(connection, content)
@@ -240,11 +241,13 @@ const libName = async (connection) => {
 const libStatus = async (connection, content) => {
   try {
     const result1 = await commonButtons.libDetail(connection, content)
-    const libData = await lib.libStatus(result1[0])
+    const libData = await lib.libStatus(result1.number)
     const buttons = await commonButtons.lib(connection)
+
     buttons.push('처음으로')
     const data = {
       libData,
+      result1,
       buttons,
     }
     return data

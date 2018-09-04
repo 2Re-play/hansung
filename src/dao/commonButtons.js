@@ -40,7 +40,7 @@ exports.shuttle = (connection, content) => {
   return new Promise((resolve, reject) => {
     const shuttleBus = []
     const Query = ` 
-    SELECT CONCAT(from_to,'\n',time,'    ', running_time,'  ', datail,'\n' ) as packaging FROM shuttle_bus WHERE season = '${content}' 
+    SELECT CONCAT(from_to,'\n   ',time,'    ', running_time,'\n   ', datail,'\n\n' ) as packaging FROM shuttle_bus WHERE season = '${content}' 
     `
     connection.query(Query, (err, result) => {
       for (const i in result) {
@@ -101,14 +101,13 @@ exports.busKind = (connection) => {
 // 열람실
 exports.libDetail = (connection, content) => {
   return new Promise((resolve, reject) => {
-    const library = []
+    const library = {}
     const Query = ` 
-    SELECT library_number FROM library WHERE library_name = '${content}'
+    SELECT library_number, library_address FROM library WHERE library_name = '${content}'
     `
     connection.query(Query, (err, result) => {
-      for (const i in result) {
-        library.push(result[i].library_number)
-      }
+      library.number = result[0].library_number
+      library.address = result[0].library_address
       err && reject(err)
       resolve(library)
     })
@@ -131,4 +130,4 @@ exports.lib = (connection) => {
     })
   })
 }
-// SELECT library_name FROM library
+
