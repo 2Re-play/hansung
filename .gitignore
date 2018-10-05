@@ -38,6 +38,7 @@ config/
 jspm_packages/
 .vscode/
 .idea/
+log/
 
 # TypeScript v1 declaration files
 typings/

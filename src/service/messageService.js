@@ -5,6 +5,7 @@ const busData = require('../lib/arriveBus')
 const mainButtons = require('../dao/mainButtons')
 const fineDust = require('../lib/fineDust')
 const lib = require('../lib/librarySeat')
+const weather = require('../lib/weather')
 
 
 // 최상위 버튼 선택 
@@ -33,6 +34,7 @@ exports.selectMessage = async (content, err) => {
     else if (content === '제1열람실 (3층)') result = await libStatus(connection, content)
     else if (content === '제2열람실 (4층)') result = await libStatus(connection, content)
     else if (content === '우촌관열람실(101호)') result = await libStatus(connection, content)
+    else if (content === '한성대 오늘날씨') result = await weatherInfo(connection)
     else if (content === '처음으로') result = await main(connection)
     else if (err) reject(err)
     resolve(result)
@@ -260,6 +262,24 @@ const libStatus = async (connection, content) => {
 }
 
 
+const weatherInfo = async (connection) => {
+  try {
+    const data = await mainButtons.main(connection)
+    const data2 = await weather.weatherData()
+    console.log('날씨 정보', data2)
+    const result = {
+      data,
+      data2,
+    }
+    console.log(result.data2[0])
+    return result
+  } catch (e) {
+    console.log(e.message)
+    return e.message
+  } finally {
+    connection.release()
+  }
+}
 /*
     창신역 - > 한성대 후문
         종로 03번

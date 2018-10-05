@@ -167,6 +167,24 @@ const libStatusRespondJson = (message, obj, obj2, obj3, res, status) => {
 }
 
 
+// 미세먼지 응답메시지
+const weatherRespondJson = (message, obj, obj2, res, status) => {
+
+  console.log(status)
+  res
+    .status(status)
+    .json({
+      message: {
+        text: `${message}\n 날씨 : ${obj.wfKor} \n 기온 : ${obj.temp}°C \n 강수확률 : ${obj.pop}% \n 습도 : ${obj.reh}% `, // 수정
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: _.isEmpty(obj2) ? [] : obj2,
+      },
+    })
+}
+
+
 module.exports = {  
   firstRespondJson,
   outRespondJson,
@@ -179,4 +197,5 @@ module.exports = {
   fineDustRespondJson,
   libRespondJson,
   libStatusRespondJson,
+  weatherRespondJson,
 }
