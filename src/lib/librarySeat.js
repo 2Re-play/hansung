@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 
 
 exports.libStatus = async (roomId) => {
-  let status
+  let status = {}
   const url = 'http://113.198.91.9/domianweb/roomview5.asp'
   const queryParams = `?room_no=${roomId}` /* 정류소고유번호 */
   const option = {

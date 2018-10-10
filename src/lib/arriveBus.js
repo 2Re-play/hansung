@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const opendata = require('../../config/serviceKey')
 
 exports.busData1 = async (arsId) => {
-  let busInfo
+  let busInfo = {}
   const url = 'http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid'
   const queryParams = `?ServiceKey=${opendata.serviceKey}&arsId=${arsId[0].bus_arsId}` /* 정류소고유번호 */    
   const option = {
@@ -33,7 +33,7 @@ exports.busData1 = async (arsId) => {
 }
 
 exports.busData2 = async (arsId) => {
-  let busInfo
+  let busInfo = {}
   const url = 'http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid'
   const queryParams = `?ServiceKey=${opendata.serviceKey}&arsId=${arsId[0].bus_arsId}` /* 정류소고유번호 */    
   const option = {
@@ -67,7 +67,7 @@ exports.busData2 = async (arsId) => {
 
 
 exports.busData3 = async (arsId) => {
-  let busInfo
+  let busInfo = {}
   const url = 'http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid'
   const queryParams = `?ServiceKey=${opendata.serviceKey}&arsId=${arsId[0].bus_arsId}` /* 정류소고유번호 */
   const option = {

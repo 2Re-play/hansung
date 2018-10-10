@@ -10,7 +10,7 @@ const opendata = require('../../config/serviceKey')
 */
 
 exports.air = async () => {
-  let info
+  let info = {}
   let data
   const str = '서울'
   const encodedStr = qs.escape(str)
