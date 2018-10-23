@@ -121,7 +121,7 @@ const fineDustRespondJson = (message, obj, obj2, res, status) => {
     .status(status)
     .json({
       message: {
-        text: `${message}\n미세먼지 농도: ${obj.dust}㎍/㎥ (${obj.dustStatus})\n ${obj.time}기준`, // 수정
+        text: `${message}\n미세먼지 농도: ${obj.dust}㎍/㎥ (${obj.dustStatus})\n초미세먼지 농도: ${obj.tinyDust}㎍/㎥ (${obj.tinyDustStatus})\n ${obj.time}기준`, // 수정
       },
       keyboard: {
         type: 'buttons',
