@@ -33,14 +33,14 @@ exports.air = async () => {
       console.log('zzzzzzzzzz', tinyDust)
 
 
-      if (dust < 30) dustStatus = '좋음😆'
+      if (dust < 30) dustStatus = '좋음😍'
       else if (dust > 30 && dust < 80) dustStatus = '보통🙂'
-      else if (dust > 80 && dust < 150) dustStatus = '나쁨😫'
+      else if (dust > 80 && dust < 150) dustStatus = '나쁨😰'
       else if (dust > 150) dustStatus = '매우나쁨😡'
 
-      if (tinyDust < 15) tinyDustStatus = '좋음😆'
+      if (tinyDust < 15) tinyDustStatus = '좋음😍'
       else if (tinyDust > 15 && tinyDust < 35) tinyDustStatus = '보통🙂'
-      else if (tinyDust > 35 && tinyDust < 75) tinyDustStatus = '나쁨😫'
+      else if (tinyDust > 35 && tinyDust < 75) tinyDustStatus = '나쁨😰'
       else tinyDustStatus = '매우나쁨😡'
 
       info = {
