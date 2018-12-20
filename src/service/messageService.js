@@ -145,7 +145,7 @@ const busKind = async (connection) => {
 const busInfo1 = async (connection, content) => {
   try {  
     const result1 = await commonButtons.busId(connection, content)
-    const bus = await busData.busData1(result1)
+    const bus = await busData.busData3(result1)
     const buttons = await commonButtons.busKind(connection)
     buttons.push('처음으로')
 
