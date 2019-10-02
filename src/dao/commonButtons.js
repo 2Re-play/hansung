@@ -40,7 +40,7 @@ exports.shuttle = (connection, content) => {
   return new Promise((resolve, reject) => {
     const shuttleBus = []
     const Query = ` 
-    SELECT CONCAT(from_to,'\n   ',time,'    ', running_time,'\n   ', datail,'\n\n' ) as packaging FROM shuttle_bus WHERE season = '${content}' 
+    SELECT CONCAT(from_to,'\n   ',time,'    ', running_time,'\n   ,'🚎',', datail,'\n\n' ) as packaging FROM shuttle_bus WHERE season = '${content}' 
     `
     connection.query(Query, (err, result) => {
       for (const i in result) {
