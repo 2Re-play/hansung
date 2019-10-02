@@ -33,6 +33,7 @@ exports.selectMessage = async (content, err) => {
     else if (content === '열람실 좌석현황') result = await libName(connection)
     else if (content === '제1열람실 (3층)') result = await libStatus(connection, content)
     else if (content === '제2열람실 (4층)') result = await libStatus(connection, content)
+    else if (content === '제3열람실 (5층)') result = await libStatus(connection, content)
     else if (content === '우촌관열람실(101호)') result = await libStatus(connection, content)
     else if (content === '한성대 오늘날씨') result = await weatherInfo(connection)
     else if (content === '처음으로') result = await main(connection)

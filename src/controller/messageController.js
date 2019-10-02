@@ -25,6 +25,7 @@ exports.message = async (req, res) => {
     else if (content === '열람실 좌석현황') response.libRespondJson('🐢잔여 좌석을 확인할 열람실을 선택해주세요!🐢\n', result.buttons, res, 200)
     else if (content === '제1열람실 (3층)') response.libStatusRespondJson(`🐢${content}의 좌석 현황입니다.🐢`, result.libData, result.buttons, result.result1, res, 200)
     else if (content === '제2열람실 (4층)') response.libStatusRespondJson(`🐢${content}의 좌석 현황입니다.🐢`, result.libData, result.buttons, result.result1, res, 200)
+    else if (content === '제3열람실 (5층)') response.libStatusRespondJson(`🐢${content}의 좌석 현황입니다.🐢`, result.libData, result.buttons, result.result1, res, 200)
     else if (content === '우촌관열람실(101호)') response.libStatusRespondJson(`🐢${content}의 좌석 현황입니다.🐢`, result.libData, result.buttons, result.result1, res, 200)
     else if (content === '한성대 오늘날씨') response.weatherRespondJson('🐢한성대학교 오늘날씨 정보입니다!🐢\n', result.data2[0], result.data, res, 200)
     else if (content === '처음으로') response.backToFirstRespondJson('🐢이용하실 서비스를 선택해주세요!🐢', result, res, 200)
